@@ -1,6 +1,8 @@
+import { useState } from "react"
+
 export default function Calculadora() {
 
-    let calculo = ""
+    const [calculo, setCalculo] = useState('')
 
     return (
         <div className="calc-component">
@@ -10,40 +12,95 @@ export default function Calculadora() {
             <a>{calculo}</a>
             <div className="calc-grid">
 
-                <button onClick={calcula}>1</button>
+                <button onClick={
+                    event => {
+                        let ultimoCaractere = calculo.charAt(calculo.length - 1);
+                        if (ultimoCaractere == "+" || ultimoCaractere == "-" ||
+                            ultimoCaractere == "*" || ultimoCaractere == "/") {
+                            console.log("Não pode")
+                        } else {
+                            setCalculo(calculo + event.target.textContent)
+                        }
+                    }
+                }
 
-                <button onClick={calcula}>2</button>
+                >1</button>
 
-                <button onClick={calcula}>3</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>2</button>
 
-                <button onClick={calcula}>4</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>3</button>
 
-                <button onClick={calcula}>5</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>4</button>
 
-                <button onClick={calcula}>6</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>5</button>
 
-                <button onClick={calcula}>7</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>6</button>
 
-                <button onClick={calcula}>8</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>7</button>
 
-                <button onClick={calcula}>9</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>8</button>
 
-                <button onClick={calcula}>+</button>
+                <button onClick={event => setCalculo(calculo + event.target.textContent)}>9</button>
 
-                <button onClick={calcula}>-</button>
+                <button onClick={
+                    event => {
+                        let ultimoCaractere = calculo.charAt(calculo.length - 1);
+                        if (ultimoCaractere == "+" || ultimoCaractere == "-" ||
+                            ultimoCaractere == "*" || ultimoCaractere == "/") {
+                            console.log("Não pode")
+                        } else {
+                            setCalculo(calculo + event.target.textContent)
+                        }
+                    }
+                }>+</button>
 
-                <button onClick={calcula}>*</button>
+                <button onClick={
+                    event => {
+                        let ultimoCaractere = calculo.charAt(calculo.length - 1);
+                        if (ultimoCaractere == "+" || ultimoCaractere == "-" ||
+                            ultimoCaractere == "*" || ultimoCaractere == "/") {
+                            console.log("Não pode")
+                        } else {
+                            setCalculo(calculo + event.target.textContent)
+                        }
+                    }
+                }>-</button>
 
-                <button onClick={calcula}>/</button>
+                <button onClick={
+                    event => {
+                        let ultimoCaractere = calculo.charAt(calculo.length - 1);
+                        if (ultimoCaractere == "+" || ultimoCaractere == "-" ||
+                            ultimoCaractere == "*" || ultimoCaractere == "/") {
+                            console.log("Não pode")
+                        } else {
+                            setCalculo(calculo + event.target.textContent)
+                        }
+                    }
+                }>*</button>
+
+                <button onClick={
+                    event => {
+                        let ultimoCaractere = calculo.charAt(calculo.length - 1);
+                        if (ultimoCaractere == "+" || ultimoCaractere == "-" ||
+                            ultimoCaractere == "*" || ultimoCaractere == "/") {
+                            console.log("Não pode")
+                        } else {
+                            setCalculo(calculo + event.target.textContent)
+                        }
+                    }
+                }>/</button>
 
                 <button onClick={calcula}>=</button>
-                <button onClick={calcula}>. </button>
+                <button onClick={limpa}>Del </button>
             </div>
         </div>
     )
-    function calcula(event) {
-        let valor = event.target.textContent
-        calculo += valor
-        return calculo
+    function calcula() {
+       
+    setCalculo(   eval(calculo)+"")
+        
+    }
+    function limpa() {
+        setCalculo("")
     }
 }
